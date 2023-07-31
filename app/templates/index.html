@@ -2,68 +2,70 @@
     <head>
         <meta charset="utf-8">
     </head>
-    <table>
-        <thead>
-        <tr>
-            <th>종류</th>
-            <th>월요일</th>
-            <th>화요일</th>
-            <th>수요일</th>
-            <th>목요일</th>
-            <th>금요일</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>급식소</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[0,i] }} </td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <td>[12:25~12:45]</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[0,i] }} </td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <td>급식소</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[0,i] }} </td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <td>[12:45~01:05]</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[0,i] }} </td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <td>흡연_과학관</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[1,i] }} </td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <td>[12:25~12:45]</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[1,i] }} </td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <td>흡연_과학관</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[1,i] }} </td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <td>[12:25~01:05]</td>
-            {% for i in range(1,6) %}
-            <td> {{ df.iloc[1,i] }} </td>
-            {% endfor %}
-        </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table>
+            <thead>
+            <tr class="line">
+                <th>종류</th>
+                <th>월요일</th>
+                <th>화요일</th>
+                <th>수요일</th>
+                <th>목요일</th>
+                <th>금요일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>급식소</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ lunch1.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:25~12:45]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ lunch1.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>급식소</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{lunch2.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:45~01:05]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ lunch2.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>흡연_과학관</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking1.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:25~12:45]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking1.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>흡연_과학관</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking2.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:25~01:05]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking2.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <style>
         html,
         body {
@@ -82,16 +84,15 @@
             transform: translate(-50%, -50%);
         }
         table {
-            width: 1200px;
-            height: 400px;
+            width: 800px;
             border-collapse: collapse;
-            overflow: hidden;
+            overflow: auto;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         th,
         td {
             padding: 15px;
-            font-size: xx-large;
+            font-size: x-large;
             font-weight: bold;
             background-color: rgba(255, 255, 255, 0.2);
             color: #fff;
@@ -117,6 +118,14 @@
             bottom: -9999px;
             background-color: rgba(255, 255, 255, 0.2);
             z-index: -1;
+        }
+        .line{
+            border-bottom:5px solid #ffffff;
+        }
+        .vertical_line{
+            border-left:4px solid #ffffff;
+            border-right:4px solid #ffffff;
+            border-collapse: collapse;
         }
 
     </style>
