@@ -1,8 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from pretty_html_table import build_table
-import pandas as pd
 
 import config
 
@@ -16,9 +14,11 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
+    from . import models
 
-    from views import main_views
+    from .views import main_views, patrol
     app.register_blueprint(main_views.bp)
+    app.register_blueprint(patrol.bp)
 
     return app
 
