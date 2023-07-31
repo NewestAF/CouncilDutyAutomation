@@ -1,0 +1,123 @@
+<div class="container">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <table>
+        <thead>
+        <tr>
+            <th>종류</th>
+            <th>월요일</th>
+            <th>화요일</th>
+            <th>수요일</th>
+            <th>목요일</th>
+            <th>금요일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>급식소</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[0,i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>[12:25~12:45]</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[0,i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>급식소</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[0,i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>[12:45~01:05]</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[0,i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>흡연_과학관</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[1,i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>[12:25~12:45]</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[1,i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>흡연_과학관</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[1,i] }} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>[12:25~01:05]</td>
+            {% for i in range(1,6) %}
+            <td> {{ df.iloc[1,i] }} </td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        table {
+            width: 1200px;
+            height: 400px;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        th,
+        td {
+            padding: 15px;
+            font-size: xx-large;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        th {
+            text-align: left;
+        }
+        thead th {
+            background-color: #55608f;
+        }
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        tbody td {
+            position: relative;
+        }
+        tbody td:hover:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+    </style>
+</div>
