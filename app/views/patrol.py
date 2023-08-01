@@ -2,7 +2,8 @@ import random
 
 import pandas as pd
 import numpy as np
-from flask import Blueprint
+import sqlite3 as sql
+from flask import Blueprint, render_template
 
 from app import db
 from app import models
@@ -10,6 +11,22 @@ from app import models
 bp = Blueprint('patrol', __name__, url_prefix='/patrol')
 
 # if __name__ == '__main__':
+
+@bp.route('/')
+def index():
+    lunch1 = pd.read_sql('select weekday, student1, student2 from patrol where type="점심1"', sql.connect("app/student.db"))
+    lunch2 = pd.read_sql('select weekday, student1, student2 from patrol where type="점심2"', sql.connect("app/student.db"))
+    smoking1 = pd.read_sql('select weekday, student1, student2 from patrol where type="흡연1"',
+                           sql.connect("app/student.db"))
+    smoking2 = pd.read_sql('select weekday, student1, student2 from patrol where type="흡연2"',
+                           sql.connect("app/student.db"))
+
+    return render_template('patrol.html',
+                           lunch1=lunch1,
+                           lunch2=lunch2,
+                           smoking1=smoking1,
+                           smoking2=smoking2)
+
 @bp.route('/reset')
 def patrol_reset():
     file = open("C:\\Users\\NewestAF\\Documents\\dev\\CouncilDutyAutomation\\app\\studentList.txt", "rt",

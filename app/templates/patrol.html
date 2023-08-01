@@ -1,0 +1,132 @@
+<div class="container">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <div class="table-responsive">
+        <table>
+            <thead>
+            <tr class="line">
+                <th>종류</th>
+                <th>월요일</th>
+                <th>화요일</th>
+                <th>수요일</th>
+                <th>목요일</th>
+                <th>금요일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>급식소</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ lunch1.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:25~12:45]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ lunch1.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>급식소</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{lunch2.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:45~01:05]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ lunch2.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>흡연_과학관</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking1.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:25~12:45]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking1.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>흡연_과학관</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking2.iloc[i, 1] }} </td>
+                {% endfor %}
+            </tr>
+            <tr class="line">
+                <td>[12:25~01:05]</td>
+                {% for i in range(0,5) %}
+                <td class="vertical_line"> {{ smoking2.iloc[i, 2] }} </td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        table {
+            width: 800px;
+            border-collapse: collapse;
+            overflow: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        th,
+        td {
+            padding: 15px;
+            font-size: x-large;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        th {
+            text-align: left;
+        }
+        thead th {
+            background-color: #55608f;
+        }
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        tbody td {
+            position: relative;
+        }
+        tbody td:hover:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+        .line{
+            border-bottom:5px solid #ffffff;
+        }
+        .vertical_line{
+            border-left:4px solid #ffffff;
+            border-right:4px solid #ffffff;
+            border-collapse: collapse;
+        }
+
+    </style>
+</div>
